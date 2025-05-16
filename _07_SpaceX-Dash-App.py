@@ -13,6 +13,7 @@ min_payload = spacex_df['Payload Mass (kg)'].min()
 
 # Create a dash application
 app = dash.Dash(__name__)
+server = app.server  # This is critical for deployment
 
 # Create an app layout
 app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
@@ -73,10 +74,6 @@ def get_pie_chart(entered_site):
                      title='Total Success Launches for site' + entered_site
                     )
         return fig
-
-
-app = dash.Dash(__name__)
-server = app.server  # This is critical for deployment
 
 
 # TASK 4:

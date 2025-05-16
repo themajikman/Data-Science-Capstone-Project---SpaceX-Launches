@@ -69,8 +69,9 @@ def get_pie_chart(entered_site):
         return fig
     else:
         filtered_df = spacex_df[spacex_df['Launch Site'] == entered_site]
+        filtered_df['Outcome'] = filtered_df['class'].map({1: 'Success', 0: 'Failure'})
         fig = px.pie(filtered_df,
-                     names='class',
+                     names='Outcome',
                      title='Total Success Launches for site' + entered_site
                     )
         return fig
